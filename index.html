@@ -560,17 +560,14 @@ button.btn{background:transparent;cursor:pointer;line-height:inherit;font-weight
 .team-grid{max-width:none}
 #team .adv-grid{max-width:820px}
 
-/* Hero: copy and dot field side by side once there is room. */
-@media(min-width:1100px){
-  .hero>.wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
-    column-gap:clamp(48px,6vw,96px);align-items:end}
-  .hero>.wrap>.brandline{grid-column:1/-1}
-  .hero .hero-copy{padding-bottom:0}
-  .hero .hero-copy .col{max-width:none}
-  .hero .field-wrap{margin:0 0 16px}
-  .hero .field{grid-template-columns:repeat(10,1fr);max-width:340px}
-  .hero .field-cap{max-width:340px}
-}
+/* Hero: one column. Lede, dot field and caption share the same left and right edges;
+   dots sit flush with both edges and use the same spacing across and down. */
+:root{--hero-measure:700px}
+.hero .lede,.hero .field,.hero .field-cap{max-width:var(--hero-measure)}
+.hero .field{grid-template-columns:repeat(20,var(--d));justify-content:space-between;
+  row-gap:calc((min(100vw - var(--gutter) * 2,var(--hero-measure)) - var(--d) * 20) / 19)}
+.hero .dot{aspect-ratio:auto;width:var(--d);height:var(--d)}
+
 
 /* Small screens: quieter nav, comfortable tap targets, tighter vertical rhythm. */
 @media(max-width:699px){
