@@ -542,6 +542,58 @@ button.btn{background:transparent;cursor:pointer;line-height:inherit;font-weight
   #people-panel{scroll-margin-top:90px}
   #people-panel .hero{padding-top:clamp(36px,5vw,56px)}
 }
+
+/* Wider canvas: one 1160px container shared with the topbar. Headings use the
+   extra width; paragraphs stay at a comfortable reading measure. */
+:root{--wrap:1160px;--gutter:20px}
+@media(min-width:700px){:root{--gutter:32px}}
+.wrap{width:min(100% - var(--gutter) * 2,var(--wrap))}
+.col{max-width:820px}
+.col>p,.col .lede,.cta-body,.work-intro,#team>.wrap>.lede{max-width:66ch}
+.work-foundation{max-width:72ch}
+@media(min-width:700px){
+  .topbar{padding-inline:max(var(--gutter),(100% - var(--wrap)) / 2)}
+}
+.work-pillars,.work-lab-main{gap:clamp(38px,5vw,64px)}
+@media(min-width:611px){#how .step{grid-template-columns:minmax(200px,.8fr) minmax(0,1.2fr);gap:14px clamp(28px,5vw,64px)}}
+#how .step p,#how .principle-more>p{max-width:66ch}
+.team-grid{max-width:none}
+#team .adv-grid{max-width:820px}
+
+/* Hero: copy and dot field side by side once there is room. */
+@media(min-width:1100px){
+  .hero>.wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);
+    column-gap:clamp(48px,6vw,96px);align-items:end}
+  .hero>.wrap>.brandline{grid-column:1/-1}
+  .hero .hero-copy{padding-bottom:0}
+  .hero .hero-copy .col{max-width:none}
+  .hero .field-wrap{margin:0 0 16px}
+  .hero .field{grid-template-columns:repeat(10,1fr);max-width:340px}
+  .hero .field-cap{max-width:340px}
+}
+
+/* Small screens: quieter nav, comfortable tap targets, tighter vertical rhythm. */
+@media(max-width:699px){
+  .topnav{scrollbar-width:none;padding-bottom:0;
+    -webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  .topnav::-webkit-scrollbar{display:none}
+  .topnav a{padding-block:9px}
+  .hero{padding-top:118px}
+  section{padding-block:clamp(52px,14vw,72px)}
+  h1{font-size:clamp(2rem,9vw,2.5rem)}
+  .work-pillar>h3,.work-lab>h3,.work-lab-intro h3{font-size:1.4rem}
+  .btn{display:block;width:100%;text-align:center;padding-block:14px}
+  /* Inline padding enlarges the tap area without moving the surrounding text. */
+  .work-lab-current a,.foot a{padding-block:14px}
+  .foot a{margin-block:-14px}
+}
+/* The team button gets a shorter label on phones so it stays on one line. */
+.lbl-short{display:none}
+@media(max-width:699px){
+  .lbl-long{display:none}
+  .lbl-short{display:inline}
+  .btn{letter-spacing:.1em}
+}
 </style>
 </head>
 <body>
@@ -673,7 +725,7 @@ button.btn{background:transparent;cursor:pointer;line-height:inherit;font-weight
       <h2 class="rv">Connecting humanitarian and resilience systems with AI and technology expertise</h2>
     </div>
     <p class="lede rv">AISHA brings together experience in global humanitarian assistance, resilience and crisis response with expertise in AI and technology. Grounded in both fields, we connect the institutions that manage crises with the people developing and governing AI to strengthen essential systems, support responsible AI use and prepare for emerging risks.</p>
-    <button type="button" class="btn" aria-expanded="false" aria-controls="people-panel">Explore our expertise and work with AISHA</button>
+    <button type="button" class="btn" aria-expanded="false" aria-controls="people-panel"><span class="lbl-long">Explore our expertise and work with AISHA</span><span class="lbl-short">Our expertise &amp; how to work with us</span></button>
   </div>
 </section>
 
