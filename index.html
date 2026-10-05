@@ -567,6 +567,9 @@ button.btn{background:transparent;cursor:pointer;line-height:inherit;font-weight
 .hero .field{grid-template-columns:repeat(20,var(--d));justify-content:space-between;
   row-gap:calc((min(100vw - var(--gutter) * 2,var(--hero-measure)) - var(--d) * 20) / 19)}
 .hero .dot{aspect-ratio:auto;width:var(--d);height:var(--d)}
+/* Section labels ("Why it matters", "What we do"...) and the hero brand line read as headings. */
+.eyebrow,.brandline{font-size:clamp(.84rem,1vw,.94rem);letter-spacing:.14em}
+.eyebrow{margin-bottom:32px}
 /* Two-line headline from tablet width up: each line stays whole, and the type
    scales down just enough for the longer second line to fit the container. */
 @media(min-width:700px){
