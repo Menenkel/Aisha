@@ -7,7 +7,7 @@
 <meta name="supported-color-schemes" content="light">
 <meta name="theme-color" content="#FFFFFF">
 <title>AISHA — AI Safety in Humanitarian Assistance</title>
-<meta name="description" content="Done right, AI sharpens humanitarian programming. Done wrong, it puts lives at risk. AISHA is humanitarian practitioners and AI engineers — training, translation and guardrails for agencies, national partners and the companies building these tools.">
+<meta name="description" content="AISHA connects humanitarian and AI expertise to strengthen locally led action, shared analytical capability, adaptive programmes and preparedness for AI-related risks.">
 <script>try{if('IntersectionObserver' in window)document.documentElement.className+=' js';}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
 :root{
   color-scheme:light only;
   --paper:#FFFFFF; --paper-2:#F4F4F3; --paper-3:#E7E7E5;
-  --ink:#333537; --mute:#75777A;
+  --ink:#333537; --mute:#66696C;
   --line:rgba(51,53,55,.14); --line-2:rgba(51,53,55,.26);
   --white:#FFFFFF;
   --red:#8A1F1F; --red-soft:rgba(138,31,31,.10); --red-mid:rgba(138,31,31,.45);
@@ -31,10 +31,14 @@ html::-webkit-scrollbar,body::-webkit-scrollbar{width:0;display:none}
 body{margin:0;background:#FFFFFF!important;color:var(--ink);font-family:var(--display);
   font-size:clamp(16px,1.05vw,17px);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.wrap{width:min(100% - 40px,1120px);margin-inline:auto}
+.wrap{width:min(100% - 40px,900px);margin-inline:auto}
 .col{max-width:640px}
 section{padding-block:var(--pad);position:relative}
-.rule{height:1px;background:var(--line);border:0;margin:0}
+.rule{position:relative;height:1px;background:transparent;border:0;margin:0;overflow:visible}
+.rule::before{content:"";position:absolute;inset-inline:0;top:0;height:1px;background:var(--line)}
+.rule::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;margin:-2.5px 0 0 -2.5px;
+  border-radius:50%;background:var(--paper);box-shadow:0 0 0 1px var(--line-2) inset,0 0 0 5px var(--paper)}
+section{padding-block:calc(var(--pad) * 1.35)}
 
 .eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--mute);display:flex;align-items:center;gap:14px;margin-bottom:28px}
@@ -58,11 +62,14 @@ p{margin:0 0 16px;color:#4A4C4E}
 /* topbar */
 .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--red);z-index:50;transition:width .12s linear}
 .topbar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;
-  justify-content:center;gap:16px;padding:12px clamp(14px,4vw,22px);
+  justify-content:space-between;gap:clamp(16px,4vw,40px);padding:12px clamp(14px,4vw,22px);
   font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;
   background:transparent;border-bottom:1px solid transparent;
   transition:background .35s ease,border-color .35s ease}
 @media(min-width:700px){.topbar{font-size:.68rem;letter-spacing:.16em;padding:13px 24px}}
+.brand{flex:none;text-decoration:none;color:var(--ink);font-family:var(--mono);
+  font-weight:500;letter-spacing:.22em;white-space:nowrap;transition:opacity .2s ease}
+.brand:hover{opacity:.62}
 .topbar.solid{background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom-color:var(--line)}
 .topnav{display:flex;gap:clamp(14px,4.2vw,30px);overflow-x:auto;scrollbar-width:none;max-width:100%}
 .topnav::-webkit-scrollbar{display:none}
@@ -82,6 +89,133 @@ section[id]{scroll-margin-top:64px}
 .brandline b{color:var(--ink);font-weight:600}
 
 /* grids */
+/* team */
+.team-grid{display:grid;gap:clamp(26px,3vw,40px) clamp(30px,4vw,56px);grid-template-columns:1fr;margin-top:40px;max-width:880px}
+@media(min-width:600px){.team-grid{grid-template-columns:1fr 1fr}}
+.member{padding-top:22px;border-top:1px solid var(--line-2)}
+.member h3{margin:0 0 3px;font-family:var(--serif);font-weight:600;font-size:1.06rem;
+  line-height:1.3;letter-spacing:-.005em}
+.member p{margin:0;font-size:.88rem;line-height:1.65;color:var(--mute)}
+.member details{margin-top:12px}
+.member summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mute);transition:color .2s ease}
+.member summary::-webkit-details-marker{display:none}
+.member summary:hover,.member summary:focus-visible{color:var(--ink)}
+.member summary::after{content:"+";font-size:.85rem;line-height:1}
+.member details[open] summary::after{content:"\2013"}
+.member details p{margin-top:12px}
+.acc-h{margin:0 0 14px;font-family:var(--serif);font-weight:600;font-size:1.12rem;line-height:1.3}
+.subhead{margin-top:clamp(52px,6vw,84px);padding-top:30px;border-top:1px solid var(--line-2);
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.cgroup details{margin-top:2px}
+.cgroup summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--mute);transition:color .2s ease;padding:2px 0}
+.cgroup summary::-webkit-details-marker{display:none}
+.cgroup summary::after{content:"+";font-size:.9rem;line-height:1}
+.cgroup details[open] summary::after{content:"\2013"}
+.cgroup summary:hover,.cgroup summary:focus-visible{color:var(--ink)}
+.cgroup details[open] .citems{margin-top:20px}
+.ctitles{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:14px}
+.ctitles span{font-family:var(--serif);font-size:.98rem;line-height:1.35}
+.ctitles span:not(:last-child)::after{content:" ·";color:var(--mute)}
+.advisors{margin-top:clamp(42px,5vw,64px);padding-top:28px;border-top:1px solid var(--line-2)}
+.advisors-k{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);margin-bottom:20px}
+.adv-grid{display:grid;gap:22px 34px;grid-template-columns:1fr}
+@media(min-width:600px){.adv-grid{grid-template-columns:1fr 1fr}}
+.adv details{margin-top:10px}
+.adv summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);transition:color .2s ease}
+.adv summary::-webkit-details-marker{display:none}
+.adv summary::after{content:"+";font-size:.85rem;line-height:1}
+.adv details[open] summary::after{content:"\2013"}
+.adv summary:hover{color:var(--ink)}
+.adv details p{margin-top:10px}
+.adv h4{margin:0 0 4px;font-family:var(--serif);font-weight:600;font-size:.98rem;line-height:1.3}
+.adv p{margin:0;font-size:.84rem;line-height:1.6;color:var(--mute)}
+.cycle{margin-top:34px;display:grid;gap:clamp(24px,4vw,52px);grid-template-columns:1fr;align-items:center}
+@media(min-width:760px){.cycle{grid-template-columns:minmax(220px,280px) 1fr}}
+.cy-svg{width:100%;max-width:280px;display:block;margin-inline:auto;overflow:visible}
+.cy-ring{fill:none;stroke:var(--line-2);stroke-width:1}
+.cy-arrow{fill:none;stroke:var(--mute);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.cy-node{cursor:pointer;outline:none}
+.cy-hit{fill:transparent;stroke:none}
+.cy-dot{fill:var(--paper);stroke:var(--line-2);stroke-width:1.2;transition:fill .25s ease,stroke .25s ease}
+.cy-node:hover .cy-dot,.cy-node:focus-visible .cy-dot,.cy-node.hl .cy-dot{stroke:var(--ink)}
+.cy-node.on .cy-dot{fill:var(--ink);stroke:var(--ink)}
+.cy-num{font-family:var(--mono);font-size:11px;text-anchor:middle;fill:var(--mute);letter-spacing:.04em;pointer-events:none}
+.cy-node.on .cy-num{fill:var(--paper)}
+.cy-lab{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-anchor:middle;fill:var(--mute)}
+.cy-node.on .cy-lab,.cy-node.hl .cy-lab{fill:var(--ink)}
+.cy-list{border-top:1px solid var(--line)}
+.cy-row{border-bottom:1px solid var(--line);padding:22px 0 22px 18px;border-left:2px solid transparent;transition:border-color .25s ease}
+.cy-row.on{border-left-color:var(--ink)}
+.cy-kicker{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.cy-row h3{margin:0 0 8px;font-family:var(--serif);font-weight:600;font-size:clamp(1.08rem,1.6vw,1.25rem);line-height:1.28}
+.cy-desc{margin:0 0 10px;font-size:.94rem;line-height:1.6;color:var(--ink);max-width:58ch}
+/* What we do: two focus areas and a shared Lab */
+#work{scroll-margin-top:76px}
+#work .eyebrow{font-weight:400;line-height:1.6}
+.work-intro{max-width:68ch;font-size:1.08rem;line-height:1.65;margin-bottom:34px}
+.work-pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:38px}
+.work-pillar{min-width:0;border-top:2px solid var(--red);padding-top:22px}
+.work-pillar>.tag,.work-lab>.tag{display:block;margin-bottom:14px}
+.work-pillar>h3,.work-lab>h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.22;margin:0 0 18px;text-wrap:balance}
+.work-pillar>p,.work-lab>p{font-size:.98rem;line-height:1.65;margin-bottom:22px}
+.work-details{border-top:1px solid var(--line-2);border-bottom:1px solid var(--line)}
+.work-details summary{cursor:pointer;padding:15px 0;font-size:.9rem;font-weight:600;line-height:1.5;color:var(--red)}
+.work-details summary::marker{color:var(--red)}
+.work-details summary:hover{text-decoration:underline;text-underline-offset:4px}
+.work-details summary:focus-visible{outline:2px solid var(--red);outline-offset:5px;border-radius:2px}
+.work-list-intro{font-size:.86rem;margin:4px 0 18px}
+.work-activities{list-style:none;padding:0;margin:4px 0 22px;display:grid;gap:20px}
+.work-activities h4{font-size:.94rem;line-height:1.4;font-weight:600;margin:0 0 5px}
+.work-activities p{font-size:.9rem;line-height:1.6;margin:0}
+.work-lab{margin-top:46px;padding-top:22px;border-top:2px solid var(--red)}
+.work-lab-main{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:38px}
+.work-lab-intro h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.22;margin:0 0 18px}
+.work-lab-intro p{font-size:.98rem;line-height:1.65;margin:0 0 24px}
+.work-lab-current h4{font-size:.94rem;line-height:1.4;margin:0 0 18px}
+.work-lab-current>p{font-size:.9rem;line-height:1.6;margin:0 0 24px}
+.work-lab>.work-details{margin-top:4px}
+.work-lab-activities{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 34px;margin-top:8px}
+.work-foundation{font-size:.9rem;line-height:1.65;max-width:85ch;margin:24px 0 0}
+@media(max-width:699px){
+  .work-pillars,.work-lab-activities{grid-template-columns:1fr}
+  .work-pillars{gap:30px}
+  .work-lab{margin-top:34px}
+  .work-lab-main{grid-template-columns:1fr;gap:6px}
+}
+/* how-we-work spine */
+.spine{position:relative;margin-top:44px;padding-left:0}
+.spine::before{content:"";position:absolute;left:15px;top:6px;bottom:6px;width:1px;background:var(--line);}
+@media(min-width:760px){.spine::before{left:19px}}
+.step{position:relative;padding:0 0 34px 52px}
+@media(min-width:760px){.step{padding-left:64px}}
+.step:last-child{padding-bottom:0}
+.step-n{position:absolute;left:0;top:-2px;width:31px;height:31px;border-radius:50%;
+  background:var(--paper);border:1px solid var(--line-2);display:grid;place-items:center;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.02em;color:var(--mute)}
+@media(min-width:760px){.step-n{width:39px;height:39px;font-size:.68rem}}
+.step h3{margin:4px 0 8px;font-family:var(--serif);font-weight:600;font-size:1.08rem;line-height:1.3;letter-spacing:-.005em}
+.step p{margin:0;font-size:.9rem;line-height:1.65;color:var(--mute);max-width:56ch}
+.js .spine.in .step{animation:cellrise .6s cubic-bezier(.2,.7,.2,1) both}
+.js .spine.in .step:nth-child(2){animation-delay:.08s}
+.js .spine.in .step:nth-child(3){animation-delay:.16s}
+.js .spine.in .step:nth-child(4){animation-delay:.24s}
+.js .spine.in .step:nth-child(5){animation-delay:.32s}
+@media(prefers-reduced-motion:reduce){.js .spine.in .step{animation:none}}
+/* use-case clusters */
+.clus{margin-top:38px;border-top:1px solid var(--line)}
+.cgroup{border-bottom:1px solid var(--line);padding:30px 0;display:grid;gap:14px;grid-template-columns:1fr}
+.cgroup-h h3{font-family:var(--serif);font-weight:600;font-size:1.06rem;line-height:1.28;margin:0;letter-spacing:-.005em}
+.citems{display:grid;gap:22px}
+.citem{padding-left:18px;border-left:1px solid var(--line);max-width:74ch}
+.citem:hover{border-left-color:var(--line-2)}
+.citem .tag{display:block;margin-bottom:7px}
+.citem p{margin:0;font-size:.88rem;line-height:1.62;color:var(--mute)}
 .grid{display:grid;gap:1px;background:var(--line);border-block:1px solid var(--line);margin-top:38px}
 .g2{grid-template-columns:1fr}
 .g3{grid-template-columns:1fr}
@@ -89,14 +223,30 @@ section[id]{scroll-margin-top:64px}
 @media(min-width:640px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}.g4{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.g3{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1100px){.g4{grid-template-columns:repeat(4,1fr)}}
-.cell{background:var(--paper);padding:26px 24px 30px;transition:background .3s ease}
+.cell{background:var(--paper);padding:26px 24px 30px;transition:background .3s ease;display:flex;flex-direction:column}
 .cell:hover{background:var(--paper-2)}
 .cell p{font-size:.88rem;color:var(--mute);margin:0}
 .cell .tag{display:block;margin-bottom:8px}
+.cell-link{display:inline-block;margin-top:auto;padding-top:18px;align-self:flex-start;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);
+  border-bottom:1px solid transparent;transition:border-color .25s ease}
+.cell-link:hover,.cell-link:focus-visible{border-bottom-color:var(--red)}
+.cell-more summary{list-style:none;cursor:pointer;display:flex;align-items:baseline;gap:10px;
+  color:var(--mute);transition:color .25s ease}
+.cell-more summary::-webkit-details-marker{display:none}
+.cell-more summary:hover,.cell-more summary:focus-visible{color:var(--ink)}
+.cell-more summary .tag{display:inline;margin-bottom:0;font-family:var(--display);
+  font-size:1.02rem;font-weight:600;letter-spacing:-.005em;text-transform:none;
+  line-height:1.35;color:inherit}
+.cell-more summary .chev{width:7px;height:7px;border-right:1.4px solid currentColor;
+  border-bottom:1.4px solid currentColor;transform:rotate(45deg);transition:transform .3s ease;
+  flex:none;align-self:center}
+.cell-more[open] summary .chev{transform:rotate(-135deg)}
+.cell-more p{margin-top:14px;font-size:.95rem;line-height:1.55}
 @keyframes cellrise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.js .grid.in .cell,.js .expertise.in .exp,.js .bridge.in .node{animation:cellrise .6s cubic-bezier(.2,.7,.2,1) both}
-.js .grid.in .cell:nth-child(2),.js .expertise.in .exp:nth-child(2),.js .bridge.in .node:nth-child(2){animation-delay:.09s}
-.js .grid.in .cell:nth-child(3),.js .bridge.in .node:nth-child(3){animation-delay:.18s}
+.js .grid.in .cell,.js .expertise.in .exp{animation:cellrise .6s cubic-bezier(.2,.7,.2,1) both}
+.js .grid.in .cell:nth-child(2),.js .expertise.in .exp:nth-child(2){animation-delay:.09s}
+.js .grid.in .cell:nth-child(3){animation-delay:.18s}
 .js .grid.in .cell:nth-child(4){animation-delay:.27s}
 .js .grid.in .cell:nth-child(5){animation-delay:.36s}
 .js .grid.in .cell:nth-child(6){animation-delay:.45s}
@@ -144,7 +294,7 @@ footer{padding:36px 0 52px;border-top:1px solid var(--line)}
   html{scroll-behavior:auto}
   .js .rv{opacity:1!important;transform:none!important;transition:none}
   .js .flagged::after{transform:none;transition:none}
-  .js .grid.in .cell,.js .expertise.in .exp,.js .bridge.in .node{animation:none}
+  .js .grid.in .cell,.js .expertise.in .exp{animation:none}
   .topnav a::after{transition:none}
   .progress{display:none}
 }
@@ -154,42 +304,25 @@ footer{padding:36px 0 52px;border-top:1px solid var(--line)}
 .converge .line{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line-2);
   transform:scaleX(0);transform-origin:center;animation:lineIn 1s cubic-bezier(.2,.7,.2,1) .15s both}
 @keyframes lineIn{to{transform:scaleX(1)}}
-.converge-row{position:relative;display:flex;align-items:center;justify-content:space-between;height:100%}
-.converge-end{background:var(--paper);padding-inline:2px;position:relative;z-index:1;
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--mute);opacity:0;animation:endIn .7s ease .45s both}
-@keyframes endIn{to{opacity:1}}
+.converge-row{position:relative;display:flex;align-items:center;justify-content:center;height:100%}
 .converge-mark{position:relative;z-index:1;width:7px;height:7px;border-radius:50%;
-  background:var(--ink);opacity:0;transform:scale(.4);
+  background:var(--red);opacity:0;transform:scale(.4);
   animation:markIn .5s cubic-bezier(.3,.7,.3,1.6) .85s both}
 @keyframes markIn{to{opacity:1;transform:scale(1)}}
-@media(max-width:420px){.converge-end{font-size:.58rem;letter-spacing:.08em}}
-@media(prefers-reduced-motion:reduce){.converge .line,.converge-end,.converge-mark{animation:none;opacity:1;transform:none}}
-.hero-copy{padding-top:clamp(30px,4.4vw,48px);padding-bottom:clamp(48px,6vw,78px)}
-
-/* dot field — animated, white background, red flags */
+@media(prefers-reduced-motion:reduce){.converge .line,.converge-mark{animation:none;opacity:1;transform:none}}
 .field-wrap{margin-top:clamp(6px,1vw,10px)}
-.field{--d:11px;display:grid;grid-template-columns:repeat(10,1fr);width:100%;max-width:540px;margin-inline:auto}
+.field{--d:11px;display:grid;grid-template-columns:repeat(10,1fr);width:100%;max-width:540px;margin-inline:0}
 @media(min-width:920px){.field{--d:13px;max-width:580px}}
 .dot{aspect-ratio:1;display:grid;place-items:center}
 .dot::before{content:"";box-sizing:border-box;width:var(--d);height:var(--d);border-radius:50%;
   background:transparent;border:1.4px solid var(--line-2);
   transition:background .5s ease,border-color .5s ease,transform .5s ease}
 .dot.wrong::before{background:var(--red);border-color:var(--red);transform:scale(1.3)}
-.field-cap{margin:26px auto 0;text-align:center;max-width:58ch;font-family:var(--mono);
+.field-cap{margin:26px 0 0;text-align:left;max-width:58ch;font-family:var(--mono);
   font-size:.8rem;line-height:1.75;letter-spacing:.005em;color:var(--ink)}
 .field-cap em{font-style:normal;color:var(--red)}
+.hero-copy{padding-top:clamp(30px,4.4vw,48px);padding-bottom:clamp(48px,6vw,78px)}
 
-/* bridge diagram */
-.bridge{margin-top:34px;border:1px solid var(--line);display:grid;gap:1px;background:var(--line)}
-@media(min-width:760px){.bridge{grid-template-columns:1fr auto 1fr}}
-.node{background:var(--paper);padding:24px 22px}
-.node .tag{display:block;margin-bottom:12px}
-.node p{font-size:.86rem;color:var(--mute);margin:0}
-.node.mid{background:var(--paper-2);display:flex;flex-direction:column;justify-content:center;
-  align-items:flex-start;gap:8px;min-width:190px}
-.node.mid .name{font-family:var(--serif);font-size:1.35rem;font-weight:700;letter-spacing:-.01em}
-.node.mid .sub{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}
 
 /* document */
 .doc-grid{display:grid;gap:20px;margin-top:8px}
@@ -217,6 +350,13 @@ footer{padding:36px 0 52px;border-top:1px solid var(--line)}
 .note p{font-size:.82rem;line-height:1.4;color:var(--mute);margin:0}
 .note p b{color:var(--ink);font-weight:600}
 .caption{margin-top:22px;font-family:var(--mono);font-size:.72rem;line-height:1.65;color:var(--mute);max-width:60ch}
+/* section notes — closing asides */
+.note-box{margin-top:30px;border-left:2px solid var(--line-2);
+  padding:4px 0 4px 20px;max-width:74ch}
+.note-box p{margin:0;font-family:var(--mono);font-size:.74rem;line-height:1.75;color:var(--mute)}
+.note-box .k{display:block;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);opacity:.75;margin-bottom:7px}
+
 .caption b{color:var(--red);font-weight:500}
 
 /* team teaser */
@@ -262,232 +402,265 @@ footer{padding:36px 0 52px;border-top:1px solid var(--line)}
 .more summary::-webkit-details-marker{display:none}
 .more summary:hover,.more summary:focus-visible{color:var(--ink)}
 .more summary .chev{width:7px;height:7px;border-right:1.4px solid currentColor;
-  border-bottom:1.4px solid currentColor;transform:rotate(45deg);transition:transform .3s ease;flex:none}
-.more[open] summary .chev{transform:rotate(-135deg)}
+  border-bottom:1.4px solid currentColor;transform:rotate(-135deg);transition:transform .3s ease;flex:none}
+.more[open] summary .chev{transform:rotate(45deg)}
 .more .grid{margin-top:1px}
 
 .cta{background:var(--paper-2);border-top:1px solid var(--line)}
+/* work with us */
+.cta-body{margin-top:26px;max-width:62ch}
+.cta-body p{font-size:1.02rem;line-height:1.62;color:var(--mute);margin:0}
+.cta-act{margin-top:34px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.cta-act a.big{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--paper);
+  background:var(--ink);border:1px solid var(--ink);padding:15px 26px;text-decoration:none;
+  transition:background .2s ease,border-color .2s ease}
+.cta-act a.big::after{content:"\2192";font-size:.85rem;transition:transform .2s ease}
+.cta-act a.big:hover{background:var(--red);border-color:var(--red)}
+.cta-act a.big:hover::after{transform:translateX(3px)}
+.cta-act .mail{font-family:var(--mono);font-size:.8rem;color:var(--mute);text-decoration:none;
+  border-bottom:1px solid var(--line-2);padding-bottom:2px}
+.cta-act .mail:hover{color:var(--ink)}
+
 .aud{background:var(--paper-2);padding:28px 24px 30px;display:flex;flex-direction:column}
 .aud p{flex:1}
+
+/* Review additions: extend the existing typography and grid system. */
+.risk-grid .cell{display:flex;flex-direction:column;min-width:0}
+.risk-grid h3{font-family:var(--serif);font-size:1.3rem;line-height:1.25;margin-bottom:14px}
+.risk-grid .cell p{font-size:1rem;line-height:1.65;color:#4A4C4E}
+.risk-grid .cell-link{font-family:var(--display);font-size:.94rem;letter-spacing:0;text-transform:none;margin-top:auto;padding-top:22px;line-height:1.45;overflow-wrap:anywhere}
+.risk-commitment{max-width:850px;margin-top:28px;font-size:.94rem}
+.detail-page .detail-body{max-width:780px}
+.detail-page .detail-body p,.detail-page .detail-body li{font-size:1rem;line-height:1.7}
+.detail-page .detail-body ul{padding-left:22px}
+.detail-page .detail-body li{margin:0 0 12px}
+.detail-page .detail-body h3{font-size:1.16rem;margin-top:28px}
+.detail-page .detail-body h2{font-size:clamp(1.6rem,3vw,2.2rem)}
+.detail-page .hero{padding-bottom:40px}
+.detail-page .hero .col{max-width:830px}
+.detail-page section{padding-block:40px}
+.detail-page .eyebrow,.detail-page .tag,.detail-page .src{font-size:.8rem;letter-spacing:.08em}
+.detail-page .btn{font-size:.875rem;letter-spacing:.04em}
+.example{background:var(--paper-2);padding:24px;border-left:3px solid var(--red);margin-top:28px}
+.example p:last-child{margin-bottom:0}
+.related{display:flex;flex-wrap:wrap;gap:10px 22px;padding-top:20px}
+.related a{font-size:.94rem;line-height:1.6;text-underline-offset:3px}
+.detail-page .doc-grid{margin-top:24px}
+.detail-page .doc p{font-size:1rem}
+.detail-page .anno-item{font-size:.94rem}
+@media(max-width:520px){.risk-grid .cell{padding:24px 20px}.example{padding:20px}}
+
+
+/* Our approach: principles are peers, not sequential steps. */
+#how .spine{margin-top:36px;padding-left:0;border-top:1px solid var(--line)}
+#how .spine::before{display:none}
+#how .step{display:grid;grid-template-columns:minmax(180px,.85fr) minmax(0,1.15fr);gap:14px 28px;padding:25px 0;border-bottom:1px solid var(--line)}
+#how .step:last-child{padding-bottom:25px}
+#how .step h3{margin:0;font-size:1.08rem}
+#how .step p{max-width:none}
+#team .adv-grid{grid-template-columns:minmax(0,1fr);max-width:640px}
+@media(max-width:610px){#how .step{grid-template-columns:1fr;gap:8px}}
+
+/* Page rhythm and small-screen navigation. */
+#how{background:var(--paper-2)}
+@media(max-width:699px){
+  .topbar{display:block;padding:10px 16px 8px;background:rgba(255,255,255,.96);border-bottom-color:var(--line)}
+  .brand{display:block;margin-bottom:5px}
+  .topnav{max-width:none;width:100%;gap:20px;padding-bottom:5px;scrollbar-width:thin;
+    scrollbar-color:var(--line-2) transparent;font-size:.72rem;letter-spacing:.08em}
+  .topnav::-webkit-scrollbar{display:block;height:3px}
+  .topnav::-webkit-scrollbar-thumb{background:var(--line-2)}
+  .topnav a{padding-block:5px 7px}
+  .hero{padding-top:140px}
+  section[id]{scroll-margin-top:90px}
+}
+
+/* Markus's moving dot field closes the opening statement. */
+.hero .hero-copy{padding-bottom:12px}
+.hero .field-wrap{margin:28px 0 0}
+.hero .field{grid-template-columns:repeat(20,1fr);max-width:650px}
+.hero .dot{aspect-ratio:1}
+.hero .field-cap{max-width:650px;margin-top:20px;color:var(--mute)}
+@media(max-width:520px){.hero .field{--d:8px}.hero .field-cap{font-size:.75rem}}
+
+/* Give the longer reading sections a calmer rhythm. */
+#why .lede + .lede{margin-top:23px}
+#team>.wrap>.lede{max-width:700px}
+#team .member p{font-size:.94rem}
+#team .adv p{font-size:.9rem}
+
+
+/* Approach: a short principle first, with its fuller explanation on demand. */
+#how .principle-copy>p{font-size:.96rem;line-height:1.65;color:#4A4C4E}
+#how .principle-more{margin-top:8px}
+#how .principle-more summary{display:inline-flex;align-items:center;gap:11px;list-style:none;cursor:pointer;padding:8px 0;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--red)}
+#how .principle-more summary::-webkit-details-marker{display:none}
+#how .principle-more summary::after{content:"+";font-size:1rem;line-height:1}
+#how .principle-more[open] summary::after{content:"−"}
+#how .principle-more .when-open{display:none}
+#how .principle-more[open] .when-open{display:inline}
+#how .principle-more[open] .when-closed{display:none}
+#how .principle-more>p{margin-top:8px;font-size:.96rem;line-height:1.65}
+@media(pointer:coarse){#how .principle-more summary{min-height:44px}}
+/* Team and roster: extends the master site's typography, colours and layout. */
+#people-panel .hero .col{max-width:780px}
+#people-panel .brandline{margin-bottom:28px}
+#people-panel .expertise-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:38px;margin-top:30px}
+#people-panel .expertise-column{min-width:0;border-top:2px solid var(--red);padding-top:22px}
+#people-panel .expertise-column h3{font-family:var(--serif);font-size:1.4rem;line-height:1.25;margin-bottom:20px}
+#people-panel .expertise-column ul{padding-left:20px;margin:0}
+#people-panel .expertise-column li{padding-left:4px;margin-bottom:10px;color:#4A4C4E}
+#people-panel .expertise-column li::marker{color:var(--red)}
+#people-panel #collaboration{background:var(--paper-2)}
+#people-panel #collaboration .col{max-width:760px}
+#people-panel #collaboration h3{font-family:var(--serif);font-size:1.35rem;line-height:1.3;margin-top:32px;margin-bottom:14px}
+#people-panel #collaboration p{line-height:1.7}
+#people-panel #collaboration a{color:var(--red);text-underline-offset:3px;overflow-wrap:anywhere}
+#people-panel .roster-jump{margin-top:24px}
+@media(max-width:699px){#people-panel .expertise-grid{grid-template-columns:1fr;gap:30px}}
+
+#people-panel .aisha-opening{max-width:680px}
+#people-panel .aisha-profiles{margin-top:30px;border-top:1px solid var(--line)}
+#people-panel .aisha-profiles article{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:28px;padding:25px 0;border-bottom:1px solid var(--line)}
+#people-panel #collaboration .aisha-profiles h3{margin:0;font-size:1.25rem}
+#people-panel #collaboration .aisha-profiles p{margin:0}
+#people-panel .aisha-opportunities{margin-top:24px;font-size:.9rem;color:var(--mute)}
+#people-panel .aisha-contact{margin-top:38px;max-width:640px}
+#people-panel #collaboration .aisha-contact h3{margin:0 0 14px}
+#people-panel .contact-email{display:inline-flex;align-items:center;gap:20px;min-height:44px;font-family:var(--mono)}
+#people-panel .aisha-response{margin-top:12px;font-family:var(--mono);font-size:.75rem;color:var(--mute)}
+@media(max-width:610px){#people-panel .aisha-profiles article{grid-template-columns:1fr;gap:12px}}
+
+/* Merged page: expandable people panel and button-style toggle. */
+button.btn{background:transparent;cursor:pointer;line-height:inherit;font-weight:inherit;
+  -webkit-appearance:none;appearance:none;text-align:center}
+#people-panel[hidden]{display:none}
+#people-panel{scroll-margin-top:64px}
+#people-panel .hero{padding-top:clamp(36px,5vw,56px)}
+@media(max-width:699px){
+  #people-panel{scroll-margin-top:90px}
+  #people-panel .hero{padding-top:clamp(36px,5vw,56px)}
+}
 </style>
 </head>
 <body>
 
 <div class="progress" id="progress"></div>
-<div class="topbar" id="topbar">
-  <nav class="topnav">
-    <a href="#what" class="active">What we do</a>
-    <a href="#risks">Risks</a>
-    <a href="#principles">Principles</a>
-    <a href="#team">Team</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<div class="topbar" id="topbar"><a class="brand" href="#top">AISHA</a><nav class="topnav"><a href="#why" class="active">Why it matters</a><a href="#work">What we do</a><a href="#how">Our approach</a><a href="#team">Team</a><a href="#collaboration">Work with us</a></nav>
 </div>
 
 <header class="hero" id="top" data-nav="">
   <div class="wrap">
     <div class="brandline"><b>AISHA</b> — AI Safety in Humanitarian Assistance</div>
 
-    <div class="converge" aria-hidden="true">
-      <div class="line"></div>
-      <div class="converge-row">
-        <span class="converge-end l">Humanitarians</span>
-        <span class="converge-mark"></span>
-        <span class="converge-end r">AI engineers</span>
-      </div>
-    </div>
-
     <div class="hero-copy">
       <div class="col">
-        <h1 class="rv"><span class="ln">Done right, AI sharpens humanitarian programming.</span><span class="ln">Done wrong, it puts <span class="flagged">lives</span> at risk.</span></h1>
-        <p class="lede rv">We are humanitarian practitioners and AI engineers, working from both sides of that line. We help partners get the full value of AI without staking their operations on black-box analytics.</p>
-      </div>
-      <div class="field-wrap rv">
-        <div class="field" id="field" role="img" aria-label="One hundred dots representing one hundred answers. Five are red, marking wrong answers, and the five change position every second."><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot wrong"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot wrong"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot wrong"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot wrong"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot wrong"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i><i class="dot"></i></div>
-        <p class="field-cap">If just 5% of your AI-generated answers are wrong but <em>you don't know which 5%</em>, relying on the other 95% can mean accepting unnecessarily high levels of uncertainty.</p>
+        <h1 class="rv"><span class="ln">Stronger humanitarian action.</span><span class="ln">Greater resilience in an AI-shaped world.</span></h1>
+        <p class="lede rv">We work with humanitarian and resilience partners to assess where AI helps and where it fails, build safeguards and local capability for responsible use, and prepare for crises AI could cause or accelerate.</p>
       </div>
     </div>
+    <figure class="field-wrap rv">
+      <div class="field" id="field" role="img" aria-label="Illustrative field of dots. A few turn red in different positions over time, showing that failures can appear in different places each time."></div>
+      <figcaption class="field-cap">Failures can appear in different places each time. The challenge is catching them before they shape decisions.</figcaption>
+    </figure>
   </div>
 </header>
 
 <hr class="rule">
 
-<section id="what" data-nav="what">
-  <div class="wrap">
-    <div class="eyebrow rv">What we do</div>
-    <div class="col"><h2 class="rv">We sit between the humanitarians using AI systems and the engineers building them.</h2></div>
-    <div class="bridge rv">
-      <div class="node">
-        <span class="tag">Field operations</span>
-        <p>Needs assessments, targeting, triage, anticipatory action.</p>
-      </div>
-      <div class="node mid">
-        <span class="name">AISHA</span>
-        <span class="sub">Training · Translation · Guardrails</span>
-      </div>
-      <div class="node">
-        <span class="tag">AI systems</span>
-        <p>AI companies and vendors, the tools already in your workflow.</p>
-      </div>
-    </div>
-<ul class="chips rv" style="margin-top:20px"><li>Crisis prevention</li><li>Early warning</li><li>Anticipatory action</li><li>Risk financing</li><li>Humanitarian assistance</li><li>Recovery</li><li>Resilient systems</li></ul>
-    <p class="rv" style="margin-top:24px;max-width:640px">This isn't theoretical policy or a high-level theory of change. We build hands-on guardrails in direct collaboration with AI engineers and humanitarian practitioners.</p>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section>
+<section id="why" data-nav="why">
   <div class="wrap">
     <div class="eyebrow rv">Why it matters</div>
-    <div class="col"><h2 class="rv">This took nine seconds. Every figure in it is invented.</h2></div>
-    <div class="doc-grid">
-      <article class="doc rv" id="doc">
-        <div class="doc-head">
-          <span>Rapid needs assessment · draft</span>
-          <span class="warn">Model output · not validated</span>
-        </div>
-        <p>An estimated <span class="mark">412,000 people<sup>1</sup></span> in the northern districts are in urgent need of food assistance. Displacement has risen <span class="mark">34% since March<sup>2</sup></span>.</p>
-        <p>Prioritise <span class="mark">Districts 3 and 7<sup>3</sup></span> for cash transfer, caseload <span class="mark">68,000 households<sup>4</sup></span>.</p>
-      </article>
-      <div class="notes" id="notes">
-        <div class="note"><span>1</span><p><b>No source.</b> Not in any of the data the tool was given.</p></div>
-        <div class="note"><span>2</span><p><b>Wrong baseline.</b> A 2019 series that isn't comparable.</p></div>
-        <div class="note"><span>3</span><p><b>Availability, not severity.</b> Ranked by where data exists.</p></div>
-        <div class="note"><span>4</span><p><b>Undocumented assumption.</b> Household size never stated.</p></div>
-      </div>
-    </div>
-    <p class="caption rv"><b>Nothing in the file marks it as unreliable.</b> Once it reaches a proposal, it is yours to defend.</p>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section id="risks" data-nav="risks">
-  <div class="wrap">
-    <div class="eyebrow rv">Where it breaks</div>
-    <div class="col"><h2 class="rv">Ordinary errors, moving at speed.</h2></div>
-    <div class="grid g3 rv">
-      <div class="cell">
-        <span class="tag">Invented evidence</span>
-        <p>Confident figures, no traceable source.</p>
-      </div>
-      <div class="cell">
-        <span class="tag">Coverage bias</span>
-        <p>Thin data looks like calm. Targeting drifts.</p>
-      </div>
-      <div class="cell">
-        <span class="tag">Opaque triggers</span>
-        <p>Action fires on logic no one can reconstruct.</p>
-      </div>
-      <div class="cell">
-        <span class="tag">No audit trail</span>
-        <p>Six months on, no one knows which version produced it.</p>
-      </div>
-    </div>
-    <details class="more rv">
-      <summary><span class="chev"></span>See 4 more failure modes</summary>
-      <div class="grid g3">
-        <div class="cell">
-          <span class="tag">Automation bias</span>
-          <p>Overruling the tool costs more, socially, than just agreeing with it.</p>
-        </div>
-        <div class="cell">
-          <span class="tag">No recourse</span>
-          <p>Excluded households cannot ask why.</p>
-        </div>
-        <div class="cell">
-          <span class="tag">Laundered rumour</span>
-          <p>An unverified rumour goes in, and comes back out looking like a checked fact.</p>
-        </div>
-        <div class="cell">
-          <span class="tag">Misinformation at scale</span>
-          <p>Falsehoods outrun the capacity to check them.</p>
-        </div>
-      </div>
-    </details>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow rv">Accountability</div>
-    <div class="col"><h2 class="rv">You cannot answer for a decision you cannot reconstruct.</h2></div>
-    <p class="lede rv">Acceptability and transparency are not optional in humanitarian response — they are what earns it legitimacy with the people it serves. Both depend on being able to explain a decision, and AI-derived guidance used without validation quietly removes that ability.</p>
-    <ol class="ledger rv">
-      <li><span class="tag">Basis</span><p>Can the source be produced on request?</p></li>
-      <li><span class="tag">Review</span><p>Who checked it, and what did they change?</p></li>
-      <li><span class="tag">Recourse</span><p>Can the decision be contested by those it affects?</p></li>
-    </ol>
-    <p class="caption rv">Unverified outputs fail all three — and the failure is recorded nowhere. This lands hardest on <b>national and local partners</b>, who receive these tools downstream with the smallest training budget and no leverage over the vendor.</p>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow rv">Risk profile</div>
     <div class="col">
-      <h2 class="rv">Not every use of AI needs the same guardrails.</h2>
-      <p class="rv">Two questions settle it: how sensitive is the data, and what happens if the answer is wrong. Most cells need very little. A few need a great deal.</p>
-    </div>
-    <div class="rv">
-      <p class="tag" style="margin-bottom:14px">Select a cell to see what it requires</p>
-      <div class="matrix" id="matrix-grid">
-        <div></div>
-        <div class="mx-h">Public /<br>aggregate</div>
-        <div class="mx-h">Personal</div>
-        <div class="mx-h">Protection-<br>sensitive</div>
-
-        <div class="mx-r">Internal<br>use</div>
-        <button class="mx-c" data-i="0" data-risk="1" aria-pressed="false"><i></i>Light</button>
-        <button class="mx-c" data-i="1" data-risk="1" aria-pressed="false"><i></i>Light</button>
-        <button class="mx-c" data-i="2" data-risk="3" aria-pressed="false"><i></i>Restricted</button>
-
-        <div class="mx-r">Programme<br>decision</div>
-        <button class="mx-c" data-i="3" data-risk="2" aria-pressed="false"><i></i>Verify</button>
-        <button class="mx-c sel" data-i="4" data-risk="2" aria-pressed="true"><i></i>Control</button>
-        <button class="mx-c" data-i="5" data-risk="3" aria-pressed="false"><i></i>Local only</button>
-
-        <div class="mx-r">Decision on<br>identified people</div>
-        <button class="mx-c" data-i="6" data-risk="2" aria-pressed="false"><i></i>Sign-off</button>
-        <button class="mx-c" data-i="7" data-risk="3" aria-pressed="false"><i></i>Constrain</button>
-        <button class="mx-c" data-i="8" data-risk="3" aria-pressed="false"><i></i>Avoid</button>
-      </div>
-      <div class="mx-panel" id="mx-panel" aria-live="polite">
-        <span class="tag" id="mx-tag">Personal data · Programme decision</span>
-        <h3 id="mx-title">Control</h3>
-        <ul id="mx-list">
-          <li>Remove names and identifying details before you enter anything into the tool</li>
-          <li>Get the vendor to confirm in writing they won't store or train on your data</li>
-          <li>A second reviewer checks it, and that review is recorded</li>
-          <li>Agree in advance how long the data is kept before it's deleted</li>
-        </ul>
-        <p class="mx-note">A starting point, not a standard. AISHA calibrates these with each partner and each operating context.</p>
-      </div>
+      <h2 class="rv">AI is already in the systems people depend on. Safe practice hasn&rsquo;t caught up.</h2>
+      <p class="lede rv">When those systems fail, the consequences reach beyond a single wrong answer. A forecast can remain confident after the evidence beneath it has changed. If organisations rely on the same model, dataset or provider, a failure that goes unnoticed can shape decisions across an entire response.</p>
+      <p class="lede rv">AI may also help create or accelerate the crises humanitarian systems must confront, through false information, cyberattacks or biological threats. Those systems will need to recognise what is happening and keep working under pressure, even as they rely on AI themselves.</p>
+      <p class="lede rv">Humanitarian work is one of the clearest places to build that capability: decisions are consequential, information is thin, and there is rarely time to check. Stronger human judgment, clear responsibility and systems that can withstand failure matter far beyond this sector.</p>
     </div>
   </div>
 </section>
 
 <hr class="rule">
 
-<section id="principles" data-nav="principles">
+<section id="work" data-nav="work" aria-labelledby="work-heading">
   <div class="wrap">
-    <div class="eyebrow rv">Principles</div>
-    <div class="col"><h2 class="rv">Five commitments that shape how we work.</h2></div>
-    <details class="more rv">
-      <summary><span class="chev"></span>Read all 5 principles</summary>
-      <ol class="ledger">
-        <li><span class="tag">01 — Human-led</span><p>AI strengthens judgement; it doesn't replace it. Staff keep the authority to review, challenge and override.</p></li>
-        <li><span class="tag">02 — Resilient systems</span><p>We strengthen the wider systems AI is layered onto — not just the organisations using it.</p></li>
-        <li><span class="tag">03 — Locally grounded</span><p>We work at the operational layer, with local partners, not just at the policy layer.</p></li>
-        <li><span class="tag">04 — Collaborative</span><p>We reinforce the institutions and coordination mechanisms that already exist, rather than duplicate them.</p></li>
-        <li><span class="tag">05 — Deliberately scaled</span><p>Safeguards match the risk. We retain the ability to pause or stop any intervention.</p></li>
-      </ol>
-    </details>
+    <h2 class="eyebrow" id="work-heading">What we do</h2>
+    <p class="work-intro">AISHA brings together humanitarian, resilience and AI expertise to strengthen the systems people depend on. Our two complementary focus areas connect crisis preparedness with accountable, effective AI use.</p>
+    <div class="work-pillars">
+      <article class="work-pillar" aria-labelledby="crisis-heading">
+        <span class="tag">Crisis resilience</span>
+        <h3 id="crisis-heading">Prevent and respond to catastrophic AI risks and systemic harm</h3>
+        <p>AI can create new threats and undermine the global systems needed to manage crises. Drawing on our team’s extensive experience with the global humanitarian architecture and resilience systems, we can help partners identify risks, anticipate cascading impacts, strengthen early warning and coordinate preparedness and response across institutions and sectors. This includes external AI-enabled threats and failures or misuse of AI within these systems.</p>
+        <details class="work-details">
+          <summary>Explore crisis resilience capabilities</summary>
+          <p class="work-list-intro">Illustrative activities we can support:</p>
+          <ul class="work-activities">
+            <li><h4>Analytics for early warning, anticipatory action and response</h4><p>Drawing on our team’s work with UN agencies—including WFP, FAO and OCHA—government ministries and humanitarian organisations, we help partners integrate AI-related catastrophic risks into essential warning and response systems. We map how these systems collect, analyse and act on information. For example, we can examine how manipulated data or overreliance on AI forecasts can delay famine warnings, and strengthen independent verification, expert judgment and coordinated early action.</p></li>
+            <li><h4>Rumour tracking and AI-related information risk</h4><p>AI makes convincing misinformation easier to create, target and spread, posing urgent risks to public trust and crisis response. Drawing on our team’s rumour-tracking and risk-communication experience in humanitarian crises, including Ebola and COVID-19, we can help embed and scale established humanitarian practice across essential systems. This means adapting approaches to AI-enabled threats and building partnerships among local organisations, government agencies, universities and specialist technology partners to anticipate threats, detect harmful claims, verify evidence and coordinate trusted responses.</p></li>
+            <li><h4>Urban resilience and catastrophic AI risk</h4><p>Dense populations, high vulnerability and dependence on interconnected services leave cities exposed to cascading AI-related crises. Disruptions to power, water, communications or trusted information can spread across sectors, with mass displacement compounding the harm.</p><p>Our team brings extensive experience in urban humanitarian assistance, resilience and capacity building with local organisations, municipalities, ministries, national agencies, universities and businesses—including finance, construction and essential services. Drawing on this experience, we can help partners map dependencies, test disruption scenarios and integrate AI safeguards into workflows within and between institutions. This strengthens locally led prevention, preparedness and response through existing municipal, national and humanitarian systems.</p><p>AISHA is developing its first urban pilot in the Guatemala City metropolitan area, connecting local knowledge and institutional capabilities to strengthen resilience to AI-related and other crises.</p></li>
+            <li><h4>Crisis preparedness, assessment and response</h4><p>AI-associated crises require coordinated action across humanitarian and development systems. Our team brings extensive assessment and response experience across Africa, Asia, Latin America and the Caribbean, and the United States. We can help networks of agencies and local organisations strengthen their capacity to detect emerging threats, assess impacts and coordinate responses. Our systems approach builds on local leadership, existing relationships and shared responsibilities across institutions. We can support practical training, joint exercises and response planning, and provide experienced advisers to accompany partners remotely or on site during crises.</p></li>
+          </ul>
+        </details>
+      </article>
+      <article class="work-pillar" aria-labelledby="capacity-heading">
+        <span class="tag">Resilient Systems</span>
+        <h3 id="capacity-heading">Strengthen accountable, effective and safe AI use in essential global systems for crisis prevention, response and recovery.</h3>
+        <p>We can help government, humanitarian, civil society, university and private-sector partners strengthen evidence, staff expertise, safe workflows and infrastructure across connected systems. Our approach combines technical advising with shared governance to improve decisions and coordination while protecting independent judgment. The aim is stronger local authority over knowledge and action, less reliance on external actors, and reliable operations through AI-related disruptions and other crises.</p>
+        <details class="work-details">
+          <summary>Explore resilient systems capabilities</summary>
+          <p class="work-list-intro">Illustrative activities we can support:</p>
+          <ul class="work-activities">
+            <li><h4>Institutional capacity and reliable AI infrastructure</h4><p>Drawing on our team’s experience strengthening local humanitarian and resilience institutions, we can help partners build the skills, infrastructure and support needed for reliable AI use. Our developing Capable Nodes approach assesses each institution’s responsibilities, workflows, computing, connectivity and training needs. We can help partners establish staged improvement plans, connect with technical and funding expertise, and maintain essential functions when tools fail. Practical coaching strengthens professional expertise and independent judgment alongside AI skills.</p></li>
+            <li><h4>Locally governed knowledge ecosystems</h4><p>Effective humanitarian action depends on knowledge held across communities, public agencies, universities, businesses and humanitarian organisations. Building on our experience in knowledge management and strengthening local systems, we can help partners connect this evidence through locally governed knowledge ecosystems. Our approach combines shared information, professional networks and accountable AI use to support analysis, coordination and learning. Partners retain control over their contributions, can trace and challenge evidence, and build collective knowledge that endures beyond individual projects or external support.</p></li>
+            <li><h4>Technical advising, assessments and learning</h4><p>Our team brings extensive experience in humanitarian assessment, resilience programming, analytics, and monitoring, evaluation, research and learning. We can help partners apply AI to practical decisions—from identifying vulnerable populations and assessing needs to comparing programme options and learning from results. Our technical advising connects sector expertise, local evidence and appropriate analytical methods. We can help teams verify findings in the field, identify uncertainty and test whether AI improves the quality and usefulness of their work while strengthening staff capability and institutional memory.</p></li>
+            <li><h4>Information governance and safe workflows</h4><p>Drawing on our team’s experience managing knowledge and working with sensitive humanitarian data, we can help institutions govern how information enters, moves through and informs their systems. With partners, we review real workflows, establish which information may enter which AI tools, and assign responsibility for checking outputs and acting on them. This includes protecting confidential information, keeping AI-generated material distinguishable from source evidence, and establishing correction and fallback procedures. The aim is trustworthy shared information and accountable decisions within and across institutions.</p></li>
+          </ul>
+        </details>
+      </article>
+    </div>
+    <article class="work-lab" aria-labelledby="lab-heading">
+      <span class="tag">Supporting both focus areas</span>
+      <div class="work-lab-main">
+      <div class="work-lab-intro">
+      <h3 id="lab-heading">Safe AI Innovation Lab</h3>
+      <p>Our Safe AI Innovation Lab brings together data scientists, humanitarian and disaster risk management practitioners, and AI engineers to develop and test tools and safeguard essential information systems, networks and workflows. It provides controlled testing environments to assess reliability, refine safeguards and develop practical approaches. The Lab openly shares tools, evidence, lessons and resources that partners can adapt and use in the field.</p>
+      </div>
+      <div class="work-lab-current">
+      <h4>Explore current Lab work and contribute</h4>
+      <ul class="work-activities">
+        <li><p><a href="https://github.com/Menenkel/el-nino-assessment-prompt">Explore our publicly available prompt for El Niño analysis</a>.</p></li>
+        <li><p>Help design and test our Safe AI Prompt Coach for humanitarian organisations, currently in development.</p></li>
+      </ul>
+      <p><a href="#collaboration">Learn how to partner with the Safe AI Innovation Lab</a></p>
+      </div>
+      </div>
+      <details class="work-details">
+        <summary>Explore planned Lab activities</summary>
+        <ul class="work-activities work-lab-activities">
+          <li><h4>Evaluate models and workflows</h4><p>Assess usefulness, factual reliability, language performance, privacy and human oversight against real operational needs.</p></li>
+          <li><h4>Test system resilience</h4><p>Use controlled scenarios to examine manipulation, cascading failures, detection and recovery, with specialist partners where needed.</p></li>
+          <li><h4>Develop and pilot tools</h4><p>Build and refine practical approaches with partners, comparing them with existing practice and documenting limitations.</p></li>
+          <li><h4>Share learning and capability</h4><p>Publish suitable methods, training and tested configurations to support local adaptation and independent operation.</p></li>
+        </ul>
+      </details>
+    </article>
+    <p class="work-foundation">Across both areas, the aim is stronger local leadership and institutions. Where AI safety and effectiveness depend on them, our work can also strengthen field verification, professional skills, trusted relationships, governance and non-AI fallback arrangements.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="how" data-nav="how">
+  <div class="wrap">
+    <div class="eyebrow rv">Our approach</div>
+    <div class="spine rv">
+      <div class="step"><h3>Strengthening human capacity and accountability</h3><div class="principle-copy"><p>AI can erode professional skills, weaken independent judgment and blur responsibility across institutions and systems.</p><details class="principle-more"><summary><span class="when-closed">Read more</span><span class="when-open">Read less</span></summary><p>We help stakeholders integrate AI in ways that strengthen expertise, decision-making and coordination, while keeping people equipped, authorised and accountable to review, challenge and override its outputs.</p></details></div></div>
+      <div class="step"><h3>Locally led</h3><div class="principle-copy"><p>Global resilience and AI safety depend on strong local institutions and leadership.</p><details class="principle-more"><summary><span class="when-closed">Read more</span><span class="when-open">Read less</span></summary><p>We work with government agencies, local organisations, universities and the private sector to strengthen local expertise, authority and ownership. Our partnerships with international organisations support this foundation, helping local institutions shape decisions and sustain action with less dependence on external assistance.</p></details></div></div>
+      <div class="step"><h3>Resilient systems</h3><div class="principle-copy"><p>AI safety depends on how connected institutions and services function together.</p><details class="principle-more"><summary><span class="when-closed">Read more</span><span class="when-open">Read less</span></summary><p>Drawing on our team’s decades of experience with systems approaches, we help partners integrate safeguards into shared workflows, understand dependencies and coordinate prevention, detection, response and recovery. The aim is to strengthen essential systems so they can withstand disruption and maintain critical functions when information becomes unreliable, technology fails or organisations can no longer fulfil their roles.</p></details></div></div>
+      <div class="step"><h3>Collaboration and shared learning</h3><div class="principle-copy"><p>Global AI safety and resilience require many partners working together.</p><details class="principle-more"><summary><span class="when-closed">Read more</span><span class="when-open">Read less</span></summary><p>We collaborate across humanitarian, government, research, technology and AI safety communities to coordinate efforts, build on established good practice and learn from others. We openly share our findings, lessons, tools and approaches so others can scrutinise, adapt and improve them, strengthening collective capability across organisations and sectors.</p></details></div></div>
+      <div class="step"><h3>Prioritised and rigorous</h3><div class="principle-copy"><p>We prioritise critical global AI safety challenges affecting essential humanitarian and disaster risk management systems.</p><details class="principle-more"><summary><span class="when-closed">Read more</span><span class="when-open">Read less</span></summary><p>We approach each task with care, transparency and rigour: grounding decisions in evidence, making assumptions and limitations explicit, and testing approaches before expanding their use. We adapt, pause or stop when findings warrant it.</p></details></div></div>
+    </div>
   </div>
 </section>
 
@@ -495,139 +668,81 @@ footer{padding:36px 0 52px;border-top:1px solid var(--line)}
 
 <section id="team" data-nav="team">
   <div class="wrap">
-    <div class="eyebrow rv">Who we are</div>
+    <div class="eyebrow rv">Team</div>
     <div class="col">
-      <h2 class="rv">Both sides of the problem, in one team.</h2>
-      <p class="lede rv">Years in humanitarian operations. Years building and evaluating AI systems. Very few people sit in both.</p>
+      <h2 class="rv">Connecting humanitarian and resilience systems with AI and technology expertise</h2>
     </div>
-    <div class="expertise rv">
-      <div class="exp">
-        <span class="tag">Humanitarian practice</span>
+    <p class="lede rv">AISHA brings together experience in global humanitarian assistance, resilience and crisis response with expertise in AI and technology. Grounded in both fields, we connect the institutions that manage crises with the people developing and governing AI to strengthen essential systems, support responsible AI use and prepare for emerging risks.</p>
+    <button type="button" class="btn" aria-expanded="false" aria-controls="people-panel">Explore our expertise and work with AISHA</button>
+  </div>
+</section>
+
+<div id="people-panel" hidden>
+<hr class="rule">
+<header class="hero people-hero" id="people-top" data-nav="team">
+  <div class="wrap">
+    <div class="brandline rv"><b>AISHA</b> — AI Safety in Humanitarian Assistance</div>
+    <div class="col">
+      <h1 class="rv">People and expertise</h1>
+      <p class="lede rv">AISHA brings together humanitarian and resilience experience with practical AI expertise. That combination helps us examine where AI improves the work, where it introduces risk, and what people and institutions need to use it responsibly and keep essential systems working under pressure.</p>
+    </div>
+  </div>
+</header>
+<hr class="rule">
+<section id="people-expertise" data-nav="team">
+  <div class="wrap">
+    <div class="col"><h2 class="rv">The expertise we bring</h2></div>
+    <div class="expertise-grid rv">
+      <div class="expertise-column">
+        <h3>Humanitarian and resilience expertise</h3>
         <ul>
-          <li>Needs assessment and targeting</li>
-          <li>Anticipatory action and triggers</li>
-          <li>Cash and risk financing</li>
-          <li>Partner capacity building</li>
+          <li>Urban humanitarian assistance and resilience</li>
+          <li>Health systems strengthening and service delivery</li>
+          <li>Infectious disease preparedness and outbreak response</li>
+          <li>Food security and nutrition</li>
+          <li>Water, sanitation and hygiene (WASH)</li>
+          <li>Housing, shelter and settlements</li>
+          <li>Protection of vulnerable populations</li>
+          <li>Education in emergencies and education system resilience</li>
+          <li>Livelihoods and market systems</li>
+          <li>Disaster risk management and climate adaptation</li>
+          <li>Risk communication, rumour tracking and community engagement</li>
+          <li>Monitoring, evaluation, research and learning (MERL)</li>
         </ul>
       </div>
-      <div class="exp">
-        <span class="tag">AI technology</span>
+      <div class="expertise-column">
+        <h3>AI, data and technology expertise</h3>
         <ul>
-          <li>Testing AI models for weaknesses and failure points</li>
-          <li>Tracking where data comes from and how it moves</li>
-          <li>Earth observation analytics</li>
-          <li>Putting AI tools into use, and monitoring them</li>
+          <li>Model evaluation and red-teaming</li>
+          <li>AI safety and catastrophic risk</li>
+          <li>Data engineering, pipelines and provenance</li>
+          <li>Earth observation and geospatial analytics</li>
+          <li>Natural language processing</li>
+          <li>Deployment, monitoring and drift detection</li>
+          <li>Information systems and data governance</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
-
 <hr class="rule">
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow rv">How we work</div>
-    <div class="grid rv" style="grid-template-columns:1fr">
-      <div class="pillar">
-        <div class="pillar-n">01</div>
-        <div>
-          <h3>Hands-on training, in-country</h3>
-          <p>Sessions run on your own programme data, with national partners — not a webinar from headquarters.</p>
-        </div>
+<section id="collaboration" data-nav="collaboration"><div class="wrap">
+      <div class="eyebrow">WORK WITH AISHA</div>
+      <h2 class="rv">Bring your expertise to the work.</h2>
+      <p class="aisha-opening">We welcome conversations with organisations interested in working together, and with people whose expertise complements ours. For project collaboration, advisory contributions and potential team roles, we are particularly interested in two groups.</p>
+      <div class="aisha-profiles">
+        <article><h3>Humanitarian and resilience practitioners with AI experience</h3><p>Practitioners who have applied, assessed or governed AI in humanitarian or resilience work. We value the combination of operational experience, local systems knowledge and practical AI expertise.</p></article>
+        <article><h3>AI safety and technical specialists</h3><p>People with expertise in AI safety and systemic risk, model evaluation, applied AI development, or data and information systems. Contributions may include testing tools and workflows, developing safeguards, and supporting the Safe AI Innovation Lab. Prior humanitarian experience is welcome but not required.</p></article>
       </div>
-      <div class="pillar">
-        <div class="pillar-n">02</div>
-        <div>
-          <h3>A working channel to the builders</h3>
-          <p>One point of contact between operational reality and the companies shipping these systems.</p>
-        </div>
+      <p class="aisha-opportunities">Project and advisory opportunities, and ongoing team roles, will depend on the work taking shape and the funding available.</p>
+      <div class="aisha-contact">
+        <h3>Start a conversation</h3>
+        <p>Tell us about your work and where you see a connection with AISHA. If you are interested in contributing as an individual, include a CV or professional profile.</p>
+        <a class="contact-email" href="mailto:hello@aisha.org">hello@aisha.org <span aria-hidden="true">→</span></a>
+        <p class="aisha-response">We respond to all inquiries within two weeks.</p>
       </div>
-      <div class="pillar">
-        <div class="pillar-n">03</div>
-        <div>
-          <h3>Guardrails sized for your team</h3>
-          <p>The same protocols work for a five-person national NGO and a country office.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow rv">Use cases</div>
-    <div class="col">
-      <h2 class="rv">Where this applies.</h2>
-      <p class="rv">AI that makes people and institutions more capable — not that replaces them.</p>
-    </div>
-    <div class="grid g3 rv">
-      <div class="cell">
-        <span class="tag">Early warning</span>
-        <p>Forecasting for crises and displacement that stays anchored to what's actually happening on the ground, even as the data used to check it erodes.</p>
-      </div>
-      <div class="cell">
-        <span class="tag">Rumour tracking</span>
-        <p>Verification and risk-communication capacity built before a crisis rather than improvised during one.</p>
-      </div>
-      <div class="cell">
-        <span class="tag">Knowledge management</span>
-        <p>Screening what AI-generated content enters your evidence base, who owns it, and which data may touch which tools.</p>
-      </div>
-    </div>
-    <details class="more rv">
-      <summary><span class="chev"></span>See 3 more use cases</summary>
-      <div class="grid g3">
-        <div class="cell">
-          <span class="tag">Context-specific tools</span>
-          <p>Answers grounded in curated sectoral knowledge, traceable to a source a practitioner can verify.</p>
-        </div>
-        <div class="cell">
-          <span class="tag">Assessments</span>
-          <p>Faster, wider assessment coverage organised around the decision actually in front of someone.</p>
-        </div>
-        <div class="cell">
-          <span class="tag">Urban resilience</span>
-          <p>More than 1.1 billion people already live in informal settlements exposed to overlapping, worsening disaster risks.</p>
-        </div>
-      </div>
-      <p class="src">Sources: UN DESA, Population Division, Thirty Years After Cairo, 2024; UN Statistics Division, The Sustainable Development Goals Report 2024.</p>
-    </details>
-  </div>
-</section>
-
-<hr class="rule">
-
-<section class="cta" id="contact" data-nav="contact">
-  <div class="wrap">
-    <div class="eyebrow rv">Work with us</div>
-    <div class="col"><h2 class="rv">Pick the door that fits.</h2></div>
-    <div class="grid g4 rv" style="border:1px solid var(--line)">
-      <div class="aud">
-        <span class="tag">Practitioners</span>
-        <p>International agency or local NGO. Bring a live workflow, or a bad output.</p>
-        <a class="btn" href="mailto:hello@aisha.org?subject=Training">Request a session</a>
-      </div>
-      <div class="aud">
-        <span class="tag">Technology partners</span>
-        <p>Test your assumptions against how responses actually run.</p>
-        <a class="btn" href="mailto:hello@aisha.org?subject=Partnership">Start a partnership</a>
-      </div>
-      <div class="aud">
-        <span class="tag">Funders</span>
-        <p>Back the hidden layer between AI and humanitarian decision support — including for the small local NGOs that could never fund it alone.</p>
-        <a class="btn" href="mailto:hello@aisha.org?subject=Funding">See the case</a>
-      </div>
-      <div class="aud">
-        <span class="tag">Work with us</span>
-        <p>Humanitarian and resilience practitioners, and people who build, evaluate and govern AI systems.</p>
-        <a class="btn" href="mailto:hello@aisha.org?subject=Roster">Join our roster</a>
-      </div>
-    </div>
-  </div>
-</section>
+    </div></section>
+</div>
 
 <footer><div class="wrap foot">
   <span>AISHA — AI Safety in Humanitarian Assistance</span>
@@ -637,6 +752,49 @@ footer{padding:36px 0 52px;border-top:1px solid var(--line)}
 <script>
 try{
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+(function(){
+  var nodes=[].slice.call(document.querySelectorAll('.cy-node'));
+  var rows=[].slice.call(document.querySelectorAll('.cy-row'));
+  if(!nodes.length) return;
+  function setOn(k){
+    nodes.forEach(function(n){n.classList.toggle('on',+n.dataset.k===k);});
+    rows.forEach(function(r){r.classList.toggle('on',+r.dataset.k===k);});
+  }
+  function hl(k){nodes.forEach(function(n){n.classList.toggle('hl',+n.dataset.k===k);});}
+  function go(k){
+    setOn(k);
+    if(matchMedia('(max-width:759px)').matches) rows[k].scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'});
+  }
+  nodes.forEach(function(n){
+    n.addEventListener('click',function(){go(+n.dataset.k);});
+    n.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go(+n.dataset.k);}});
+  });
+  rows.forEach(function(r){
+    var k=+r.dataset.k;
+    r.addEventListener('mouseenter',function(){hl(k);});
+    r.addEventListener('mouseleave',function(){hl(-1);});
+  });
+})();
+
+const field=document.querySelector('#field');
+if(field){
+  for(let i=0;i<100;i++){
+    const dot=document.createElement('i');
+    dot.className='dot'+([3,17,46,64,87].includes(i)?' wrong':'');
+    field.appendChild(dot);
+  }
+}
+const dots=[...document.querySelectorAll('#field .dot')];
+if(dots.length && !reduce){
+  setInterval(()=>{
+    dots.forEach(d=>d.classList.remove('wrong'));
+    const idx=new Set();
+    while(idx.size<5) idx.add(Math.floor(Math.random()*dots.length));
+    idx.forEach(i=>dots[i].classList.add('wrong'));
+  },2600);
+}
+
 const io = new IntersectionObserver(es=>{
   es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
 },{threshold:.12,rootMargin:'0px 0px -6% 0px'});
@@ -660,44 +818,8 @@ const onScroll=()=>{
 onScroll();
 addEventListener('scroll',onScroll,{passive:true});
 
-const dots=[...document.querySelectorAll('#field .dot')];
-if(dots.length && !reduce){
-  setInterval(()=>{
-    dots.forEach(d=>d.classList.remove('wrong'));
-    const idx=new Set();
-    while(idx.size<5) idx.add(Math.floor(Math.random()*dots.length));
-    idx.forEach(i=>dots[i].classList.add('wrong'));
-  },1000);
-}
 
-const marks=[...document.querySelectorAll('.mark')], notes=[...document.querySelectorAll('.note')];
-if(!reduce){
-  const an=new IntersectionObserver(es=>{es.forEach(e=>{
-    if(!e.isIntersecting)return; an.unobserve(e.target);
-    marks.forEach((m,i)=>setTimeout(()=>{m.classList.add('lit'); if(notes[i])notes[i].classList.add('in');},600+i*480));
-  })},{threshold:.45});
-  an.observe(document.getElementById('doc'));
-}else{ notes.forEach(n=>n.classList.add('in')); }
 
-const MX=[
-  {tag:"Public data · Internal use",title:"Light",items:["Record which AI tool and version produced it","Spot-check figures against the original source","No further approval needed"]},
-  {tag:"Personal data · Internal use",title:"Light",items:["Remove names and identifying details before you enter anything into the tool","Record which AI tool and version you used","Existing data-protection rules still apply"]},
-  {tag:"Protection-sensitive data · Internal use",title:"Restricted",items:["Do not enter protection data into an outside AI tool, whatever the task","Work from summaries that don't identify anyone","Your data-protection focal point signs off first"]},
-  {tag:"Public data · Programme decision",title:"Verify",items:["Validate every figure against a named source","A second reviewer checks it before the decision is taken","Keep a record of what was entered, what came back, and who checked it"]},
-  {tag:"Personal data · Programme decision",title:"Control",items:["Remove names and identifying details before you enter anything into the tool","Get the vendor to confirm in writing they won't store or train on your data","A second reviewer checks it, and that review is recorded","Agree in advance how long the data is kept before it's deleted"]},
-  {tag:"Protection-sensitive data · Programme decision",title:"Local only",items:["Use a tool that runs on your own systems, or fully offline — nothing leaves your network","A named person in the data-protection role must approve it first","Keep a full record of what was done, but only for a short time","Use devices that are encrypted and physically secured; no personal laptops"]},
-  {tag:"Public data · Decision on identified people",title:"Sign-off",items:["Check it independently against confirmed, verified facts","A named person owns the decision — not the tool","Write down the reasoning so the decision holds up without the AI tool","A published way for people to contest the decision"]},
-  {tag:"Personal data · Decision on identified people",title:"Constrain",items:["The tool can support the decision; it cannot make it","Every case is reviewed by a person, not a sample of cases","The underlying data is checked independently","A published way for people to contest the decision"]},
-  {tag:"Protection-sensitive data · Decision on identified people",title:"Avoid",items:["The default is not to use AI here at all","If there's no alternative: a fully offline tool, on a device never connected to the internet, with two people signing off","Every single output is reviewed and recorded individually","A written assessment of possible harm, completed before the tool is used"]}
-];
-const mxBtns=[...document.querySelectorAll('.mx-c')];
-mxBtns.forEach(b=>b.addEventListener('click',()=>{
-  const d=MX[+b.dataset.i];
-  mxBtns.forEach(x=>{x.classList.toggle('sel',x===b);x.setAttribute('aria-pressed',x===b);});
-  document.getElementById('mx-tag').textContent=d.tag;
-  document.getElementById('mx-title').textContent=d.title;
-  document.getElementById('mx-list').innerHTML=d.items.map(t=>'<li>'+t+'</li>').join('');
-}));
 
 const links=[...document.querySelectorAll('.topnav a')];
 const spy=new IntersectionObserver(es=>{
@@ -709,6 +831,59 @@ const spy=new IntersectionObserver(es=>{
   });
 },{rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('[data-nav]').forEach(x=>spy.observe(x));
+
+/* People panel: expand/collapse, deep links to #collaboration. */
+(function(){
+  const panel=document.getElementById('people-panel');
+  const toggle=document.querySelector('button[aria-controls="people-panel"]');
+  if(!panel||!toggle) return;
+  const behavior=()=>reduce?'auto':'smooth';
+  const isOpen=()=>!panel.hidden;
+  function setActive(name){
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+name));
+  }
+  function openPanel(){
+    if(isOpen()) return;
+    panel.hidden=false;
+    toggle.setAttribute('aria-expanded','true');
+    panel.querySelectorAll('.rv').forEach(el=>{el.classList.add('in');try{io.unobserve(el);}catch(e){}});
+  }
+  function closePanel(){
+    if(!isOpen()) return;
+    panel.hidden=true;
+    toggle.setAttribute('aria-expanded','false');
+    const act=document.querySelector('.topnav a.active');
+    if(act&&act.getAttribute('href')==='#collaboration') setActive('team');
+  }
+  function scrollToEl(el){ el.scrollIntoView({behavior:behavior(),block:'start'}); }
+  function goHash(){
+    const h=location.hash;
+    if(h==='#collaboration'){ openPanel(); scrollToEl(document.getElementById('collaboration')); }
+    else if(h==='#people-panel'){ openPanel(); scrollToEl(panel); }
+  }
+  toggle.addEventListener('click',()=>{
+    if(isOpen()){
+      closePanel();
+      const r=toggle.getBoundingClientRect();
+      if(r.top<0||r.bottom>innerHeight) toggle.scrollIntoView({behavior:behavior(),block:'center'});
+    }else{
+      openPanel();
+      scrollToEl(panel);
+    }
+  });
+  document.querySelectorAll('a[href="#collaboration"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      openPanel();
+      scrollToEl(document.getElementById('collaboration'));
+      try{history.replaceState(null,'','#collaboration');}catch(err){}
+    });
+  });
+  addEventListener('hashchange',goHash);
+  if(location.hash==='#collaboration'||location.hash==='#people-panel'){
+    requestAnimationFrame(goHash);
+  }
+})();
 
 }catch(err){
   document.documentElement.className=document.documentElement.className.replace(/\bjs\b/,'');
