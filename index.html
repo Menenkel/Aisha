@@ -567,6 +567,13 @@ button.btn{background:transparent;cursor:pointer;line-height:inherit;font-weight
 .hero .field{grid-template-columns:repeat(20,var(--d));justify-content:space-between;
   row-gap:calc((min(100vw - var(--gutter) * 2,var(--hero-measure)) - var(--d) * 20) / 19)}
 .hero .dot{aspect-ratio:auto;width:var(--d);height:var(--d)}
+/* Two-line headline from tablet width up: each line stays whole, and the type
+   scales down just enough for the longer second line to fit the container. */
+@media(min-width:700px){
+  .hero .hero-copy .col{max-width:none}
+  .hero h1 .ln{white-space:nowrap}
+  .hero h1{font-size:min(3.7rem,(min(100vw - var(--gutter) * 2,var(--wrap))) / 17.5)}
+}
 
 
 /* Small screens: quieter nav, comfortable tap targets, tighter vertical rhythm. */
